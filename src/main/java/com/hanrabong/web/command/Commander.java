@@ -13,7 +13,7 @@ public class Commander {
 		switch (Action.valueOf(request
 				.getParameter("action")
 				.toUpperCase())) {
-		case LOGIN: c = null;break;
+		case LOGIN: c =     null;break;
 		case JOIN: c = null;break;
 		default:
 			break;
