@@ -16,7 +16,7 @@ public class Commander {
 		case LOGIN: c =     null;break;
 		case JOIN: c = null;break;
 		default:
-			c = null;
+			
 			break;
 		}
 		return c;
