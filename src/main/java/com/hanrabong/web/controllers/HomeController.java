@@ -13,23 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-import com.hanrabong.web.seviceImpls.EmpServiceImpl;
+
+import com.hanrabong.web.seviceImpls.HCustServiceImpl;
 
 
 @Controller
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	@Autowired EmpServiceImpl empService;
+	@Autowired HCustServiceImpl hCustService;
 
 	@GetMapping("/")
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome {}. ", "HomeController");
-		
-	
-		int count=empService.countEmp();
-		
-		model.addAttribute("count", count );
 		
 		return "index";
 	}

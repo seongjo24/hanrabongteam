@@ -7,13 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.hanrabong.web.domains.DeptDTO;
-import com.hanrabong.web.domains.EmpDTO;
+import com.hanrabong.web.domains.HAdminDTO;
+import com.hanrabong.web.domains.HCustDTO;
 
 
 @Component 
-public interface EmpService {
+public interface HCustService {
 	
 
-	public int countEmp();
+	public int countHCust();
 }
