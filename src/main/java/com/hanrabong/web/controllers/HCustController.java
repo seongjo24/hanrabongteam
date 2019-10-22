@@ -26,10 +26,12 @@ import com.hanrabong.web.seviceImpls.HCustServiceImpl;
 public class HCustController{
    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
    @Autowired HCustServiceImpl hCustService;
+   @Autowired HCustDTO hcust;
    @PostMapping("/join")
    public @ResponseBody Map<?,?> join(@RequestBody HCustDTO hcust) {
        logger.info("ajax가 보낸 아이디 {}", hcust.getCid() +","+ hcust.getCpw());
        HashMap<String,String> map= new HashMap<>();
+       hCustService.join(hcust);
        map.put("cid",  hcust.getCid());
        map.put("cpw", hcust.getCpw());
        logger.info("map에 담긴 아이디와 비번 {}", map.get("cid") +","+ map.get("cpw"));
@@ -38,10 +40,13 @@ public class HCustController{
    @PostMapping("/login")
    public @ResponseBody Map<?,?> login(@RequestBody HCustDTO hcust) {
        logger.info("ajax가 보낸 아이디 {}", hcust.getCid() +","+ hcust.getCpw());
+       String result=hCustService.login(hcust);
        HashMap<String,String> map= new HashMap<>();
-       map.put("cid",  hcust.getCid());
-       map.put("cpw", hcust.getCpw());
-       logger.info("map에 담긴 아이디와 비번 {}", map.get("cid") +","+ map.get("cpw"));
+       map.put("result",  result);
+       map.put("cid", hcust.getCid());
+       map.put("cnum", hcust.getCid());
+       
+       logger.info("map에 담긴 사용자 정보 {}", map.toString());
        return map;
    }
 }

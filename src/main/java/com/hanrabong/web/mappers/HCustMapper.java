@@ -11,7 +11,7 @@ import com.hanrabong.web.domains.HCustDTO;
 public interface HCustMapper {
 
 
-	public int countHCusts();
-	
-	
+	public int countHCusts(HCustDTO hcust);
+	public void joinHCust(HCustDTO hcust);
+	public HCustDTO loginHcust (HCustDTO hcust);
 }

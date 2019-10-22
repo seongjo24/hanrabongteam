@@ -41,7 +41,9 @@ auth =((x)=>{
 		       		                        data: JSON.stringify(data) ,
 		       		                        contentType : 'application/json',
 		       		                        success : d =>{
-		       		                            alert('AJAX 성공 ' +d.cid+',' + d.cpw)},
+		       		                            alert(d.result)
+		       		                        mypage(d)    
+		       		                        },
 		       		                            error : e =>{
 		       			                            alert('AJAX실패' + url)
 		       			                        }})
@@ -67,7 +69,8 @@ auth =((x)=>{
         click : e=>{
         	e.preventDefault();
             let data = { cid :  $('#cid').val() ,
-                    cpw : $('#cpw').val()
+                    cpw : $('#cpw').val(),
+                    cnum:$('#cnum').val()
             }
 			    $.ajax({
                     url : _+'/hcust/join',
@@ -90,6 +93,13 @@ auth =((x)=>{
         .addClass('btn btn-primary btn-lg btn-block')
         .appendTo('#checkbtn')
 	}
-	
+	let mypage=d=>{
+		$('head')
+		.html(auth_vue.mypage_head())
+		
+		$('body')
+		.html(auth_vue.mypage_body(d))
+		
+	}
 	return{onCreate ,join ,login}
 })();

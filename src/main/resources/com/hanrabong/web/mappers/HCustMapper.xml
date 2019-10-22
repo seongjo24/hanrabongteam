@@ -1,9 +1,35 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.hanrabong.web.mappers.HCustMapper">
-	<select id="countHCusts" resultType="int">
-		SELECT COUNT(*)  COUNT FROM HCUST
-	</select>
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hanrabong.web.mappers.HCustMapper">
+    <resultMap type="com.hanrabong.web.domains.HCustDTO" id="HCustDTO">
+         <id column="cnum" property="cnum"/>
+      <result column="cid" property="cid"/>
+      <result column="cpw" property="cpw"/>
+      <result column="cname" property="cname"/>
+      <result column="gen" property="gen"/>
+      <result column="birth" property="birth"/>
+      <result column="skinProb" property="skinProb"/>
+      <result column="skinType" property="skinType"/>
+      <result column="child" property="child"/>
+      <result column="addr" property="addr"/>
+      <result column="tel" property="tel"/>
+      <result column="cpoint" property="cpoint"/>
+    </resultMap>
+
+    <select id="loginHcust"  resultMap="HCustDTO">
+        select CID,CPW 
+        from HCUST
+        where CID like #{cid} and CPW like #{cpw}
+        ;
+    </select>
+    <insert id="joinHCust">
+        insert into HCUST (cid, cpw,cnum) values (
+            #{cid}, #{cpw},#{cnum}
+        )
+    </insert>
+
+ 
+
 </mapper>
